@@ -1,0 +1,19 @@
+{
+    "authority": "https://login.microsoftonline.com/contoso.com",
+    "client_id": "Register your app, insert App/Client GUID here",
+    "scope": ["Mail.ReadWrite", "Mail.Send"],
+    "endpoint": "https://graph.microsoft.com/v1.0/me/messages?$filter=isRead ne true&$top=20",
+    "postForwardEndpoint": "https://graph.microsoft.com/v1.0/me/messages/{}/createForward",
+    "patchMessageEndpoint": "https://graph.microsoft.com/v1.0//me/messages/{}",
+    "patchMessagePayload":{
+        "body": { "contentType": "Text", "content": "" },
+        "toRecipients": [ { "emailAddress": { "address": "" } } ]
+    },
+    "postSendEndpoint": "https://graph.microsoft.com/v1.0//me/messages/{}/send",
+    "people": [
+        {"id":1,"name":"Jane Doe","nick_name":"Jane","email":"druchulefr@memeil.top","country":"USA"},
+        {"id":2,"name":"Meeting Bot","nick_name":"Bot","email":"druchulefr@memeil.top","country":"USA"},
+        {"id":3,"name":"Johnathan Doe","nick_name":"Jonny","email":"druchulefr@memeil.top","country":"USA"}
+    ],
+    "sendEmailAfterDrafting": true
+}
