@@ -9,33 +9,33 @@ products:
 description: "Python device code flow using MSAL Python to get an access token and call Microsoft Graph."
 ---
 
-# A simple Python device code flow application calling Microsoft Graph
+# A Python device code flow application calling Microsoft Graph to forward specific unread mail
 
 ## About this sample
 
 ### Overview
 
-This sample application shows how to use the [Microsoft identity platform endpoint](http://aka.ms/aadv2) to access the data of Microsoft customers.  The device code flow can be used to authenticate a user and then call to a web api, in this case, the [Microsoft Graph](https://graph.microsoft.io).
+This sample application shows how to use the [Microsoft identity platform endpoint](http://aka.ms/aadv2) to access email of the signed in user.  The device code flow can be used to authenticate a user and then call to a web api, in this case, the mail APIs on [Microsoft Graph](https://graph.microsoft.io).
 
-The app can run as a Python Console Application. It gets the list of users in an Azure AD tenant by using `Microsoft Authentication Library (MSAL) for Python` to acquire a token.
+The app can run as a Python Console Application.
 
 ## Scenario
 
-The application obtains tokens through a two steps process especially designed for devices and operating systems that cannot display any UX. Examples of such applications are applications running on iOT, or Command-Line tools (CLI). The idea is that:
+I sometimes get the question about how to programtically filter and forward email using Microsoft Graph.  This is an example that aims to demonstate all the pieces:
 
-![Topology](./ReadmeFiles/Topology.png)
+1. sign in
+2. query unread email
+3. match email to set of criteria
+4. create forwarded message to a specific person based on a set of criteria
+5. send it or leave it in the drafts folder
 
-1. Whenever a user authentication is required, the command-line app provides a code and asks the user to use another device (such as an internet-connected smartphone) to navigate to https://microsoft.com/devicelogin, where the user will be prompted to enter the code. That done, the web page will lead the user through a normal authentication experience, including consent prompts and multi factor authentication if necessary.
-
-![Enter code in browser](./ReadmeFiles/deviceCodeFlow.png)
-
-1. Upon successful authentication, the command-line app will receive the required tokens through a back channel and will use it to perform the web API calls it needs. In this case, the sample displays information about the user who signed-in and their manager.
+This could be useful for automation of responding from a mailbox.
 
 ## How to run this sample
 
 To run this sample, you'll need:
 
-> - [Python 2.7+](https://www.python.org/downloads/release/python-2713/) or [Python 3+](https://www.python.org/downloads/release/python-364/)
+> - [Python 3+](https://www.python.org/downloads/release/python-364/)
 > - An Azure Active Directory (Azure AD) tenant. For more information on how to get an Azure AD tenant, see [how to get an Azure AD tenant.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
 
 ### Step 1:  Clone or download this repository
@@ -43,7 +43,7 @@ To run this sample, you'll need:
 From your shell or command line:
 
 ```Shell
-git clone https://github.com/Azure-Samples/ms-identity-python-devicecodeflow.git
+git clone https://github.com/SaeedAkhter-MSFT/ms-identity-python-devicecodeflow-mail.git
 ```
 
 ### Step 2:  Register the sample with your Azure Active Directory tenant
